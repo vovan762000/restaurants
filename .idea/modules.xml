@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/restaurant-voiting.iml" filepath="$PROJECT_DIR$/restaurant-voiting.iml" />
+      <module fileurl="file://$PROJECT_DIR$/restaurant-voting.iml" filepath="$PROJECT_DIR$/restaurant-voting.iml" />
     </modules>
   </component>
 </project>

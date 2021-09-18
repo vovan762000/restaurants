@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="restaurant-voiting" />
+        <module name="restaurant-voting" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="restaurant-voiting" target="1.8" />
+      <module name="restaurant-voting" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
