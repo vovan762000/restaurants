@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="restaurant-voting:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>restaurant-voting</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="restaurant-voting-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="restaurant-voting:war exploded" />
+    </root>
+  </artifact>
+</component>
