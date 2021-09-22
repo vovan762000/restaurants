@@ -11,7 +11,7 @@ public class Vote extends AbstractBaseEntity {
     @NotNull
     private LocalDateTime dateTime;
 
-    @Column(name = "user")
+    @Column(name = "user_id")
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "vote")
     private User user;
 
