@@ -86,8 +86,6 @@
 <!--        <context:component-scan base-package="ru.javawebinar.**.repository.jpa"/>-->
 <!--    </beans>-->
 
-<!--    <beans profile="datajpa">-->
-<!--        <context:component-scan base-package="ru.javawebinar.**.repository.datajpa"/>-->
-<!--        <jpa:repositories base-package="ru.javawebinar.**.repository.datajpa"/>-->
-<!--    </beans>-->
+        <context:component-scan base-package="com.gmail.vovan762000.**.repository"/>
+        <jpa:repositories base-package="com.gmail.vovan762000.**.repository"/>
 </beans>

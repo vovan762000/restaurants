@@ -16,6 +16,8 @@
       <working-dir>$ProjectFileDir$</working-dir>
       <driver-properties>
         <property name="ssl" value="false" />
+        <property name="sslfactory" />
+        <property name="sslmode" value="disable" />
       </driver-properties>
     </data-source>
   </component>

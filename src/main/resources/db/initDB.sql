@@ -1,8 +1,9 @@
 DROP TABLE IF EXISTS user_roles;
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS restaurant ;
-DROP TABLE IF EXISTS dish;
 DROP TABLE IF EXISTS vote;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS dish;
+DROP TABLE IF EXISTS restaurant ;
+
 DROP SEQUENCE IF EXISTS global_seq;
 
 CREATE SEQUENCE GLOBAL_SEQ AS INTEGER START WITH 100000;
@@ -15,6 +16,7 @@ CREATE TABLE users
     password   VARCHAR(255)            NOT NULL,
     registered TIMESTAMP DEFAULT now() NOT NULL,
     enabled    BOOLEAN   DEFAULT TRUE  NOT NULL
+
 );
 CREATE UNIQUE INDEX users_unique_email_idx
     ON USERS (email);
@@ -35,21 +37,21 @@ CREATE TABLE restaurant
 
 CREATE TABLE vote
 (
-    vote_id       INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
+    id       INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
     date_time     TIMESTAMP NOT NULL,
     user_id       INTEGER   NOT NULL,
     restaurant_id INTEGER   NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES USERS (id),
+    FOREIGN KEY (user_id) REFERENCES USERS (id) ON DELETE CASCADE,
     FOREIGN KEY (restaurant_id) REFERENCES restaurant (id)
 );
 
 CREATE TABLE dish
 (
-    dish_id       INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
+    id       INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
     name          VARCHAR(255) NOT NULL,
     price         DECIMAL      not null,
     restaurant_id INTEGER      NOT NULL,
-    FOREIGN KEY (restaurant_id) REFERENCES restaurant (id)
+    FOREIGN KEY (restaurant_id) REFERENCES restaurant (id) ON DELETE CASCADE
 );
 
 -- CREATE UNIQUE INDEX meals_unique_user_datetime_idx
