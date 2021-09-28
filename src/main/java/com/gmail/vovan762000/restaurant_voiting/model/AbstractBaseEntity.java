@@ -1,11 +1,13 @@
 package com.gmail.vovan762000.restaurant_voiting.model;
 
 import org.hibernate.Hibernate;
+import org.springframework.data.domain.Persistable;
+import org.springframework.util.Assert;
 
 import javax.persistence.*;
 
 @MappedSuperclass
-public abstract class AbstractBaseEntity {
+public abstract class AbstractBaseEntity implements Persistable<Integer> {
     public static final int START_SEQ = 100000;
 
     @Id
@@ -17,6 +19,16 @@ public abstract class AbstractBaseEntity {
     protected Integer id;
 
     protected AbstractBaseEntity() {
+    }
+
+    public int id() {
+        Assert.notNull(id, "Entity must have id");
+        return id;
+    }
+
+    @Override
+    public boolean isNew() {
+        return this.id == null;
     }
 
     protected AbstractBaseEntity(Integer id) {

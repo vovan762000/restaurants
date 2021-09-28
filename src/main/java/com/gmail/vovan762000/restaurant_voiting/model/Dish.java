@@ -6,12 +6,7 @@ import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 @Entity
-public class Dish extends AbstractBaseEntity{
-
-    @NotBlank
-    @Size(min = 2, max = 100)
-    @Column(name = "name", nullable = false)
-    private String name;
+public class Dish extends AbstractNamedEntity{
 
     private BigDecimal price;
 

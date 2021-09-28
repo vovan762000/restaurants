@@ -9,12 +9,7 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
-public class Restaurant extends AbstractBaseEntity {
-
-    @NotBlank
-    @Size(min = 2, max = 100)
-    @Column(name = "name", nullable = false)
-    private String name;
+public class Restaurant extends AbstractNamedEntity {
 
     @OneToMany(fetch = FetchType.LAZY)
     private List<Vote> voies;
