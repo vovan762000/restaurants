@@ -13,6 +13,7 @@ import java.util.EnumSet;
 import java.util.Set;
 
 @Entity
+@Table(name = "users")
 public class User extends AbstractNamedEntity {
 
     @Column(name = "email", nullable = false, unique = true)
@@ -35,10 +36,12 @@ public class User extends AbstractNamedEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
+            uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "role"}, name = "uk_user_roles")})
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "user")
     private Vote vote;
 
     public User() {

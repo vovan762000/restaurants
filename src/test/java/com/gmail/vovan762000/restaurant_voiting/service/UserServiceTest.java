@@ -2,7 +2,7 @@ package com.gmail.vovan762000.restaurant_voiting.service;
 
 import com.gmail.vovan762000.restaurant_voiting.UserTestData;
 import com.gmail.vovan762000.restaurant_voiting.model.User;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -19,38 +19,38 @@ import static com.gmail.vovan762000.restaurant_voiting.UserTestData.USER_ID;
 })
 @RunWith(SpringRunner.class)
 @Sql(scripts = "classpath:db/populateDB.sql", config = @SqlConfig(encoding = "UTF-8"))
-class UserServiceTest {
+public class UserServiceTest {
 
     @Autowired
-    private final UserService service;
+    private UserService service;
 
     @Test
-    void create() {
+    public void create() {
     }
 
     @Test
-    void delete() {
+    public void delete() {
     }
 
     @Test
-    void get() {
+    public void get() {
         User user = service.get(USER_ID);
         MATCHER.assertMatch(user, UserTestData.user);
     }
 
     @Test
-    void getByEmail() {
+    public void getByEmail() {
     }
 
     @Test
-    void getAll() {
+    public void getAll() {
     }
 
     @Test
-    void update() {
+    public void update() {
     }
 
     @Test
-    void getByIdWithVote() {
+    public void getByIdWithVote() {
     }
 }

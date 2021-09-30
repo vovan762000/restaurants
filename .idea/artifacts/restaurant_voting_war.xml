@@ -7,7 +7,7 @@
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="restaurant-voting-1.0-SNAPSHOT.war">
+    <root id="archive" name="restaurant-voting.war">
       <element id="artifact" artifact-name="restaurant-voting:war exploded" />
     </root>
   </artifact>
