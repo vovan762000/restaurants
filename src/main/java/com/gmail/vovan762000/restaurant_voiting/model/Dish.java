@@ -12,7 +12,31 @@ public class Dish extends AbstractNamedEntity{
     @Column(name = "price")
     private BigDecimal price;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id", nullable = false)
     private Restaurant restaurant;
+
+    public Dish() {
+    }
+
+    public Dish(BigDecimal price, Restaurant restaurant) {
+        this.price = price;
+        this.restaurant = restaurant;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
 }

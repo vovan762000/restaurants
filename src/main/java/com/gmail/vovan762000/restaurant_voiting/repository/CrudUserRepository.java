@@ -21,4 +21,7 @@ public interface CrudUserRepository extends JpaRepository<User,Integer> {
     @EntityGraph(attributePaths = {"vote"}, type = EntityGraph.EntityGraphType.LOAD)
     @Query("SELECT u FROM User u WHERE u.id=?1")
     User getWithVote(int id);
+
+    @Query("SELECT u FROM User u WHERE u.id=?1")
+    User getById (int id);
 }

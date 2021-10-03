@@ -9,10 +9,32 @@ import java.util.List;
 @Table(name = "restaurant")
 public class Restaurant extends AbstractNamedEntity {
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Vote> votes;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     private List<Dish> dishes;
 
+    public Restaurant() {
+    }
+
+    public Restaurant(String name) {
+        super(name);
+    }
+
+    public List<Vote> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(List<Vote> votes) {
+        this.votes = votes;
+    }
+
+    public List<Dish> getDishes() {
+        return dishes;
+    }
+
+    public void setDishes(List<Dish> dishes) {
+        this.dishes = dishes;
+    }
 }

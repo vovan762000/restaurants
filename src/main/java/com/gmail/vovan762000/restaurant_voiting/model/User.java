@@ -41,7 +41,7 @@ public class User extends AbstractNamedEntity {
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
-    @OneToOne(fetch = FetchType.EAGER, mappedBy = "user")
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "user",cascade = CascadeType.PERSIST)
     private Vote vote;
 
     public User() {

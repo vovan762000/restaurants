@@ -1,8 +1,11 @@
 package com.gmail.vovan762000.restaurant_voiting;
 
+import com.gmail.vovan762000.restaurant_voiting.model.Restaurant;
 import com.gmail.vovan762000.restaurant_voiting.model.Role;
 import com.gmail.vovan762000.restaurant_voiting.model.User;
+import com.gmail.vovan762000.restaurant_voiting.model.Vote;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.Date;
 
@@ -20,5 +23,19 @@ public class UserTestData {
 
     public static User getNew() {
         return new User(null, "New", "new@gmail.com", "newPass", false, new Date(), Collections.singleton(Role.USER));
+    }
+
+    public static User getUpdated() {
+        User updated = new User(user);
+
+// In case of update with user.id=null in body needs workaround
+// ValidationUtil.assureIdConsistent called after validation
+//      updated.setEmail("update@gmail.com");
+        updated.setName("UpdatedName");
+        updated.setPassword("newPass");
+        updated.setEnabled(false);
+        updated.setRoles(Collections.singletonList(Role.ADMIN));
+        updated.setVote(new Vote(LocalDateTime.now(),user,user.getVote().getRestaurant()));
+        return updated;
     }
 }
