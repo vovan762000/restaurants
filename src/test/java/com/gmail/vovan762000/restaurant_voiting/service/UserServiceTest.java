@@ -1,11 +1,13 @@
 package com.gmail.vovan762000.restaurant_voiting.service;
 
 import com.gmail.vovan762000.restaurant_voiting.UserTestData;
+import com.gmail.vovan762000.restaurant_voiting.model.Role;
 import com.gmail.vovan762000.restaurant_voiting.model.User;
 import com.gmail.vovan762000.restaurant_voiting.util.exception.NotFoundException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
@@ -29,6 +31,12 @@ public class UserServiceTest {
 
     @Test
     public void create() {
+        User created = service.create(getNew());
+        int newId = created.id();
+        User newUser = getNew();
+        newUser.setId(newId);
+        MATCHER.assertMatch(created, newUser);
+        MATCHER.assertMatch(service.get(newId), newUser);
     }
 
     @Test
@@ -40,7 +48,6 @@ public class UserServiceTest {
     @Test
     public void get() {
         User user = service.get(USER_ID);
-        System.out.println(user);
         MATCHER.assertMatch(user, UserTestData.user);
     }
 
@@ -53,7 +60,6 @@ public class UserServiceTest {
     @Test
     public void getAll() {
         List<User> all = service.getAll();
-        all.forEach(System.out::println);
         MATCHER.assertMatch(all, admin, user);
     }
 
@@ -65,6 +71,18 @@ public class UserServiceTest {
     }
 
     @Test
-    public void getByIdWithVote() {
+    public void duplicateMailCreate() {
+        assertThrows(DataAccessException.class, () ->
+                service.create(new User(null, "Duplicate", "user@yandex.ru", "newPass", Role.USER)));
+    }
+
+    @Test
+    public void deletedNotFound() {
+        assertThrows(NotFoundException.class, () -> service.delete(NOT_FOUND));
+    }
+
+    @Test
+    public void getNotFound() {
+        assertThrows(NotFoundException.class, () -> service.get(NOT_FOUND));
     }
 }

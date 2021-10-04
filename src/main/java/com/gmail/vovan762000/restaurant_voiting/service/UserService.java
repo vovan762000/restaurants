@@ -1,7 +1,7 @@
 package com.gmail.vovan762000.restaurant_voiting.service;
 
 import com.gmail.vovan762000.restaurant_voiting.model.User;
-import com.gmail.vovan762000.restaurant_voiting.repository.UserRepository;
+import com.gmail.vovan762000.restaurant_voiting.repository.user.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
@@ -42,10 +42,10 @@ public class UserService {
 
     public void update(User user) {
         Assert.notNull(user, "user must not be null");
+        User updateUser = get(user.getId());
+        System.out.println(updateUser);
+        System.out.println(user);
         checkNotFoundWithId(repository.save(user), user.id());
     }
 
-    public User getByIdWithVote(int id) {
-        return checkNotFoundWithId(repository.getWithVote(id), id);
-    }
 }

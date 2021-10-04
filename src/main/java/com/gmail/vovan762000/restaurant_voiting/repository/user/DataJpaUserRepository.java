@@ -1,4 +1,4 @@
-package com.gmail.vovan762000.restaurant_voiting.repository;
+package com.gmail.vovan762000.restaurant_voiting.repository.user;
 
 import com.gmail.vovan762000.restaurant_voiting.model.User;
 import org.springframework.data.domain.Sort;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class DataJpaUserRepository implements UserRepository{
+public class DataJpaUserRepository implements UserRepository {
     private static final Sort SORT_NAME_EMAIL = Sort.by(Sort.Direction.ASC, "name", "email");
 
     private final CrudUserRepository crudRepository;
@@ -22,12 +22,12 @@ public class DataJpaUserRepository implements UserRepository{
     }
 
     @Override
-    public boolean delete(int id) {
+    public boolean delete(Integer id) {
         return crudRepository.delete(id) != 0;
     }
 
     @Override
-    public User get(int id) {
+    public User get(Integer id) {
         return crudRepository.getById(id);
     }
 
@@ -41,8 +41,4 @@ public class DataJpaUserRepository implements UserRepository{
         return crudRepository.findAll(SORT_NAME_EMAIL);
     }
 
-    @Override
-    public User getWithVote(int id) {
-        return crudRepository.getWithVote(id);
-    }
 }

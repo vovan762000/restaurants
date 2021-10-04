@@ -35,7 +35,12 @@ public class UserTestData {
         updated.setPassword("newPass");
         updated.setEnabled(false);
         updated.setRoles(Collections.singletonList(Role.ADMIN));
-        updated.setVote(new Vote(LocalDateTime.now(),user,user.getVote().getRestaurant()));
+        return updated;
+    }
+
+    public static User getUpdatedVote(){
+        User updated = new User(user);
+        updated.setVote(new Vote());
         return updated;
     }
 }
