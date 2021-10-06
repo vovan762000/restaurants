@@ -10,4 +10,7 @@ public interface UserRepository extends BaseRepository<User,Integer> {
     // null if not found
     User getByEmail(String email);
 
+    // null if not found
+    User getWithVote(int id);
+
 }

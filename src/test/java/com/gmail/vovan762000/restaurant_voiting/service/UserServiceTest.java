@@ -85,4 +85,10 @@ public class UserServiceTest {
     public void getNotFound() {
         assertThrows(NotFoundException.class, () -> service.get(NOT_FOUND));
     }
+
+    @Test
+    public void getWithVote(){
+        User user =service.getWithVote(USER_ID);
+        System.out.println(user);
+    }
 }

@@ -2,7 +2,9 @@ package com.gmail.vovan762000.restaurant_voiting.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "vote")
@@ -33,6 +35,14 @@ public class Vote extends AbstractBaseEntity {
         return dateTime;
     }
 
+    public LocalDate getDate(){
+        return dateTime.toLocalDate();
+    }
+
+    public LocalTime getTime(){
+        return dateTime.toLocalTime();
+    }
+
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
     }
@@ -51,5 +61,13 @@ public class Vote extends AbstractBaseEntity {
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
+    }
+
+    @Override
+    public String toString() {
+        return "Vote{" +
+                "id=" + id +
+                ", dateTime=" + dateTime +
+                '}';
     }
 }

@@ -1,10 +1,25 @@
 package com.gmail.vovan762000.restaurant_voiting.util;
 
 import com.gmail.vovan762000.restaurant_voiting.model.AbstractBaseEntity;
+import com.gmail.vovan762000.restaurant_voiting.model.Vote;
+import com.gmail.vovan762000.restaurant_voiting.util.exception.IncorrectDataException;
 import com.gmail.vovan762000.restaurant_voiting.util.exception.NotFoundException;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 public class ValidationUtil {
+    private final LocalTime END_TIME = LocalTime.of(11,00);
+
     private ValidationUtil() {
+    }
+
+    public static void checkTime(Vote vote){
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        if (!currentDateTime.toLocalDate().equals(vote.getDate())
+                || currentDateTime.toLocalTime().compareTo(LocalTime.of(11,00))<=0){
+            throw new IncorrectDataException("You can't change your mind after " + vote.getTime());
+        }
     }
 
     public static <T> T checkNotFoundWithId(T object, int id) {

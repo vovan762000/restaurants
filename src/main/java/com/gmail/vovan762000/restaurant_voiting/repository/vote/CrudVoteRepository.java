@@ -8,9 +8,12 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional(readOnly = true)
-public interface CrudVoteRepository extends JpaRepository<Vote,Integer> {
+public interface CrudVoteRepository extends JpaRepository<Vote, Integer> {
     @Transactional
     @Modifying
     @Query("DELETE FROM Vote v WHERE v.id=:id")
     int delete(@Param("id") int id);
+
+    @Query("SELECT v FROM Vote v WHERE v.id=?1")
+    Vote getById(Integer id);
 }
