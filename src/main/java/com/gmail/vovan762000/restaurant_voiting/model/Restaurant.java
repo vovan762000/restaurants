@@ -1,8 +1,9 @@
 package com.gmail.vovan762000.restaurant_voiting.model;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.List;
 
 @Entity
@@ -18,6 +19,10 @@ public class Restaurant extends AbstractNamedEntity {
     public Restaurant() {
     }
 
+    public Restaurant(Integer id, String name) {
+        super(id, name);
+    }
+
     public Restaurant(String name) {
         super(name);
     }
@@ -26,16 +31,8 @@ public class Restaurant extends AbstractNamedEntity {
         return votes;
     }
 
-    public void setVotes(List<Vote> votes) {
-        this.votes = votes;
-    }
-
     public List<Dish> getDishes() {
         return dishes;
-    }
-
-    public void setDishes(List<Dish> dishes) {
-        this.dishes = dishes;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.gmail.vovan762000.restaurant_voiting.service;
 
 import com.gmail.vovan762000.restaurant_voiting.UserTestData;
+import com.gmail.vovan762000.restaurant_voiting.VoteTestData;
 import com.gmail.vovan762000.restaurant_voiting.model.Role;
 import com.gmail.vovan762000.restaurant_voiting.model.User;
 import com.gmail.vovan762000.restaurant_voiting.util.exception.NotFoundException;
@@ -89,6 +90,7 @@ public class UserServiceTest {
     @Test
     public void getWithVote(){
         User user =service.getWithVote(USER_ID);
-        System.out.println(user);
+        MATCHER.assertMatch(user, UserTestData.user);
+        VoteTestData.MATCHER.assertMatch(user.getVote(),VoteTestData.USER_VOTE);
     }
 }
